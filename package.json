@@ -1,0 +1,46 @@
+{
+  "name": "xarvis-express-ts",
+  "version": "1.0.0",
+  "description": "An Express app with TypeScript made by Xarvis.",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "npx tsc",
+    "dev": "nodemon --watch \"./src\" --exec ts-node src/index.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --check **/*.ts",
+    "prettier:fix": "prettier --write **/*.ts",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thecodexhub/xarvis-express-ts.git"
+  },
+  "author": "Sandip Pramanik (@thecodexhub)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thecodexhub/xarvis-express-ts/issues"
+  },
+  "homepage": "https://github.com/thecodexhub/xarvis-express-ts#readme",
+  "lint-staged": {
+    "*": "npm run prettier:fix"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^20.6.0",
+    "@typescript-eslint/eslint-plugin": "^6.7.0",
+    "@typescript-eslint/parser": "^6.7.0",
+    "eslint": "^8.49.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
