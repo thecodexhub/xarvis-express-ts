@@ -1,7 +1,6 @@
-import express, { Express } from 'express';
+import app from './app';
 import * as config from './config/config';
 
-const app: Express = express();
 const port: number = config.port;
 
 app.listen(port, () => {
