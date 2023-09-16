@@ -3,6 +3,9 @@ import helmet from 'helmet';
 import compression from 'compression';
 import cors from 'cors';
 import xss from './middlewares/xss';
+import { errorConverter } from './middlewares/error-converter';
+import { errorHandler } from './middlewares/error-handler';
+import { ApiError } from './utils/api-error';
 
 const app: Express = express();
 
@@ -24,7 +27,12 @@ app.options('*', cors());
 
 // Respond with a 404 for any unknown API request.
 app.use((req: Request, res: Response, next: NextFunction) => {
-  next(new Error('Not Found'));
+  next(new ApiError(404, 'Not Found'));
 });
+
+// Convert errors, other than ApiError, into ApiError
+app.use(errorConverter);
+// Handle errors
+app.use(errorHandler);
 
 export default app;
