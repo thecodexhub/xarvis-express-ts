@@ -3,12 +3,13 @@ import helmet from 'helmet';
 import compression from 'compression';
 import cors from 'cors';
 import xss from './middlewares/xss';
+import httpStatus from 'http-status';
 import * as config from './config/config';
 import * as morgan from './config/morgan';
 import { errorConverter } from './middlewares/error-converter';
 import { errorHandler } from './middlewares/error-handler';
 import { ApiError } from './utils/api-error';
-import httpStatus from 'http-status';
+import routes from './routes/v1';
 
 const app: Express = express();
 
@@ -32,6 +33,9 @@ app.use(compression());
 // enable cors
 app.use(cors());
 app.options('*', cors());
+
+// Routes
+app.use('/v1', routes);
 
 // Respond with a 404 for any unknown API request.
 app.use((req: Request, res: Response, next: NextFunction) => {
