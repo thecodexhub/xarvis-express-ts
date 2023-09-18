@@ -4,7 +4,7 @@ import * as config from '../config/config';
 
 export const errorHandler = (err: ApiError, req: Request, res: Response, next: NextFunction) => {
   const { statusCode, message } = err;
-  res.locals.errorMessage = err;
+  res.locals.errorMessage = err.message;
 
   const response = {
     code: statusCode,

@@ -1,16 +1,17 @@
 import app from './app';
 import * as config from './config/config';
+import logger from './config/logger';
 
 const port: number = config.port;
 
 const server = app.listen(port, () => {
-  console.log(`⚡️[server]: Server is running on PORT ${port}`);
+  logger.info(`Server is running on PORT ${port}`);
 });
 
 const exitHandler = () => {
   if (server) {
     server.close((err) => {
-      console.log('Server closed');
+      logger.info('Server closed');
       process.exit(err ? 1 : 0);
     });
   } else {
@@ -19,7 +20,7 @@ const exitHandler = () => {
 };
 
 const unexpectedErrorHandler = (error: Error) => {
-  console.log(error);
+  logger.error(error);
   exitHandler();
 };
 
@@ -27,6 +28,6 @@ process.on('uncaughtException', unexpectedErrorHandler);
 process.on('unhandledRejection', unexpectedErrorHandler);
 
 process.on('SIGTERM', () => {
-  console.log('SIGTERM received');
+  logger.info('SIGTERM received');
   if (server) server.close();
 });
