@@ -8,6 +8,7 @@ import * as config from './config/config';
 import * as morgan from './config/morgan';
 import { errorConverter } from './middlewares/error-converter';
 import { errorHandler } from './middlewares/error-handler';
+import { apiRateLimiter } from './middlewares/rate-limiter';
 import { ApiError } from './utils/api-error';
 import routes from './routes/v1';
 
@@ -33,6 +34,12 @@ app.use(compression());
 // enable cors
 app.use(cors());
 app.options('*', cors());
+
+// limit repeated failed requests to all the endpoints
+// For specific endpoints, use `app.use('/path', apiRateLimiter)`
+if (config.env === 'production') {
+  app.use(apiRateLimiter);
+}
 
 // Routes
 app.use('/v1', routes);
