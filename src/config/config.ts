@@ -20,5 +20,7 @@ if (error) {
   throw new Error(`Config validation error: ${error.message}`);
 }
 
-export const env = envVars.NODE_ENV;
-export const port = envVars.PORT;
+export default {
+  env: envVars.NODE_ENV,
+  port: envVars.PORT,
+};

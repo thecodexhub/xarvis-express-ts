@@ -4,7 +4,7 @@ import compression from 'compression';
 import cors from 'cors';
 import xss from './middlewares/xss';
 import httpStatus from 'http-status';
-import * as config from './config/config';
+import config from './config/config';
 import * as morgan from './config/morgan';
 import { errorConverter } from './middlewares/error-converter';
 import { errorHandler } from './middlewares/error-handler';
