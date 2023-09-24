@@ -1,6 +1,6 @@
 {
   "name": "xarvis-express-ts",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "An Express app with TypeScript made by Xarvis.",
   "main": "src/index.ts",
   "scripts": {
